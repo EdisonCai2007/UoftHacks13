@@ -8,8 +8,8 @@ from orchestrate_webhook import send_to_webhook
 # ================= CONFIG =================
 
 CAPTURE_INTERVAL = 5            # seconds
-JPEG_QUALITY = 60               # 40–70 recommended
-MAX_WIDTH = 1280                # downscale for cost/perf
+JPEG_QUALITY = 75               # 40–70 recommended
+MAX_WIDTH = 512                # downscale for cost/perf
 
 # =========================================
 
@@ -46,6 +46,7 @@ def capture_binary() -> bytes:
 
 
 def main():
+    print("Running Screen Capture (Solo)")
     print("📸 Screen capture agent started")
 
     while True:

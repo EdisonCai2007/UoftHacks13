@@ -1,9 +1,9 @@
+# buddy.py
 import tkinter as tk
 from PIL import Image, ImageTk
 import os
 import threading
 import subprocess
-import requests
 import platform
 import math
 from flask import Flask, request, jsonify
@@ -45,9 +45,6 @@ def receive_data():
         
         # UI updates must happen on the main thread
         window.after(0, update_bubble_ui)
-        
-        if current_animation == "talk" and current_message:
-            threading.Thread(target=speak, args=(current_message,), daemon=True).start()
             
     return jsonify({"status": "ok"}), 200
 
@@ -69,20 +66,6 @@ def update_bubble_ui():
 
 def run_server():
     app.run(host='127.0.0.1', port=5000, debug=False, use_reloader=False)
-
-# ========================
-# SPEECH
-# ========================
-def speak(text: str):
-    try:
-        if platform.system() == "Windows":
-            clean_text = text.replace("'", "")
-            cmd = f"Add-Type –AssemblyName System.Speech; (New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('{clean_text}')"
-            subprocess.run(["powershell", "-Command", cmd])
-        else:
-            subprocess.run(["say", text])
-    except:
-        pass
 
 # ========================
 # INITIALIZE WINDOW
