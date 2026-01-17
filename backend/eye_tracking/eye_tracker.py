@@ -6,6 +6,8 @@ import mediapipe as mp
 import json
 import os
 
+VIDEO_CAPTURE = 0
+
 # Initialize MediaPipe
 def init_mediapipe():
     BaseOptions = mp.tasks.BaseOptions
@@ -37,7 +39,7 @@ def calibrate_eye_tracker():
     print("Press 'Q' when done\n")
     
     landmarker = init_mediapipe()
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(VIDEO_CAPTURE)
 
     history_h = deque(maxlen=10)
     history_v = deque(maxlen=10)
@@ -118,22 +120,34 @@ def calibrate_eye_tracker():
     return center_h, center_v
 
 
-def run_eye_tracker_stream(center_h=0.5, center_v=0.45):
-    """Streaming phase - runs continuously with calibration values"""
+def run_eye_tracker_stream(center_h=0.5, center_v=0.45, metrics=None):
+    """
+    Streaming phase - runs continuously with calibration values
+    
+    Args:
+        center_h: Calibrated horizontal center value
+        center_v: Calibrated vertical center value
+        metrics: SessionMetrics object for tracking analytics (optional)
+    """
     print("\n👁️  Eye tracker streaming started")
     
     landmarker = init_mediapipe()
-    cap = cv2.VideoCapture(1)
+    cap = cv2.VideoCapture(VIDEO_CAPTURE)
 
     history_h = deque(maxlen=10)
     history_v = deque(maxlen=10)
 
     H_THRESHOLD, V_THRESHOLD = 0.04, 0.04
     ALARM_DURATION = 15
+    MIN_LOOK_AWAY_DURATION = 3  # Only track if user looks away for at least 3 seconds
 
     off_screen_start_time = None
     alarm_triggered = False
     frame_timestamp_ms = 0
+    
+    # Track previous state to detect transitions
+    was_looking_away = False
+    look_away_tracked = False  # Flag to ensure we only track once per look away event
 
     while cap.isOpened():
         success, image = cap.read()
@@ -182,10 +196,18 @@ def run_eye_tracker_stream(center_h=0.5, center_v=0.45):
                 on_screen = (abs(h_diff) < H_THRESHOLD) and (abs(v_diff) < V_THRESHOLD)
 
                 if not on_screen:
+                    # User is looking away
                     if off_screen_start_time is None:
                         off_screen_start_time = time.time()
+                        was_looking_away = True
 
                     elapsed = time.time() - off_screen_start_time
+                    
+                    # Only start tracking after minimum duration threshold
+                    if elapsed >= MIN_LOOK_AWAY_DURATION and not look_away_tracked:
+                        if metrics:
+                            metrics.start_look_away()
+                        look_away_tracked = True
 
                     if elapsed > ALARM_DURATION:
                         alarm_triggered = True
@@ -197,7 +219,16 @@ def run_eye_tracker_stream(center_h=0.5, center_v=0.45):
                         status_color = (0, 165, 255)
                         txt = f"AWAY: {int(elapsed)}s"
                 else:
+                    # User is back on screen
+                    if was_looking_away and look_away_tracked:
+                        # Only track end if we started tracking (i.e., it was long enough)
+                        if metrics:
+                            metrics.end_look_away()
+                    
+                    # Reset all flags
                     off_screen_start_time, alarm_triggered = None, False
+                    was_looking_away = False
+                    look_away_tracked = False
                     status_color, txt = (0, 255, 0), "ON SCREEN"
 
                 if alarm_triggered:
@@ -210,6 +241,9 @@ def run_eye_tracker_stream(center_h=0.5, center_v=0.45):
 
         key = cv2.waitKey(1) & 0xFF
         if key == ord('q'):
+            # If user was looking away when quitting and it was tracked, end that event
+            if was_looking_away and look_away_tracked and metrics:
+                metrics.end_look_away()
             break
 
     cap.release()

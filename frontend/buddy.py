@@ -67,6 +67,13 @@ def update_bubble_ui():
 def run_server():
     app.run(host='127.0.0.1', port=5000, debug=False, use_reloader=False)
 
+def on_buddy_click(event):
+    """Handle clicks on the buddy - quit the program."""
+    print("👋 Buddy clicked - exiting program...")
+    window.quit()
+    import sys
+    sys.exit(0)
+
 # ========================
 # INITIALIZE WINDOW
 # ========================
@@ -78,7 +85,8 @@ window.config(bg=TRANS_COLOR) # Set the window floor to the 'hole' color
 if platform.system() == "Windows":
     window.attributes("-transparentcolor", TRANS_COLOR)
 else:
-    window.attributes("-transparent", True)
+    window.wm_attributes("-transparent", True)
+    window.config(bg="systemTransparent")
 
 window.geometry(f"{WINDOW_WIDTH}x{WINDOW_HEIGHT}+{START_X}+{BASE_Y}")
 
@@ -99,9 +107,18 @@ img2_original = Image.open(IMAGE_PATH_2).resize((100, 100), Image.Resampling.LAN
 moose_image2_left = ImageTk.PhotoImage(img2_original)
 moose_image2_right = ImageTk.PhotoImage(img2_original.transpose(Image.FLIP_LEFT_RIGHT))
 
-# Moose label must also use the TRANS_COLOR as its background
-label = tk.Label(window, image=moose_image2_left, bd=0, bg=TRANS_COLOR)
-label.pack(side="bottom")
+# Use Canvas instead of Label for better transparency control
+# Use a slightly off-white color that won't be treated as transparent
+canvas = tk.Canvas(window, width=100, height=100, bd=0, highlightthickness=0)
+if platform.system() == "Darwin":  # Mac
+    canvas.config(bg="#FEFEFE")  # Almost white, but not the transparency key
+else:  # Windows
+    canvas.config(bg=TRANS_COLOR)  # Use transparency key on Windows
+canvas.pack(side="bottom")
+
+# Draw the image on the canvas
+sprite_id = canvas.create_image(50, 50, image=moose_image2_left)
+canvas.bind("<Button-1>", on_buddy_click)
 
 # ========================
 # ANIMATION LOGIC
@@ -114,15 +131,14 @@ def animate_frames():
         if y != BASE_Y:
             rotation_angle = (leap_progress - 0.5) * 50
             img = img1_original if direction == 1 else img1_original.transpose(Image.FLIP_LEFT_RIGHT)
-            # Ensure the rotated "empty space" is filled with the transparency key
             rotated = img.rotate(rotation_angle, expand=False, fillcolor=TRANS_COLOR)
             photo = ImageTk.PhotoImage(rotated)
-            label.config(image=photo)
-            label.image = photo
+            canvas.itemconfig(sprite_id, image=photo)
+            canvas.image = photo  # Keep reference
         else:
-            label.config(image=moose_image2_left if direction == 1 else moose_image2_right)
+            canvas.itemconfig(sprite_id, image=moose_image2_left if direction == 1 else moose_image2_right)
     else:
-        label.config(image=moose_image2_left if direction == 1 else moose_image2_right)
+        canvas.itemconfig(sprite_id, image=moose_image2_left if direction == 1 else moose_image2_right)
     window.after(ANIMATION_SPEED, animate_frames)
 
 def move_buddy():

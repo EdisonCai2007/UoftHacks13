@@ -1,6 +1,5 @@
 import requests
 import time
-import json
 
 # Test: http://localhost:5678/webhook-test/df35d481-1743-43ee-a4ed-6b478dd5763d
 # Prod: http://localhost:5678/webhook/df35d481-1743-43ee-a4ed-6b478dd5763d
@@ -9,14 +8,13 @@ import json
 WEBHOOK_URL = "http://localhost:5678/webhook/df35d481-1743-43ee-a4ed-6b478dd5763d"
 BUDDY_API_URL = "http://127.0.0.1:5000/data"  # Buddy's Flask endpoint
 TIMEOUT = 15
-USER_TASK = "Doing calculus math homework"
 
-def send_to_webhook(image_bytes: bytes):
+def send_to_webhook(image_bytes: bytes, user_task: str):
     files = {
         "file": ("screenshot.jpg", image_bytes, "image/jpeg")
     }
     data = {
-        "current_task": USER_TASK,
+        "current_task": user_task,
         "timestamp": int(time.time())
     }
 
