@@ -1,18 +1,15 @@
 import time
-import requests
 from io import BytesIO
 from PIL import Image
 import mss
 
+from orchestrate_webhook import send_to_webhook
+
 # ================= CONFIG =================
 
-WEBHOOK_URL = "http://localhost:5678/webhook-test/df35d481-1743-43ee-a4ed-6b478dd5763d"
 CAPTURE_INTERVAL = 5            # seconds
 JPEG_QUALITY = 60               # 40–70 recommended
 MAX_WIDTH = 1280                # downscale for cost/perf
-TIMEOUT = 5                     # seconds
-
-USER_TASK = "Doing calculus math homework"
 
 # =========================================
 
@@ -46,26 +43,6 @@ def capture_binary() -> bytes:
         )
 
         return buffer.getvalue()
-
-
-def send_to_webhook(image_bytes: bytes):
-    files = {
-        "file": ("screenshot.jpg", image_bytes, "image/jpeg")
-    }
-
-    data = {
-        "current_task": USER_TASK,
-        "timestamp": int(time.time())
-    }
-
-    response = requests.post(
-        WEBHOOK_URL,
-        files=files,
-        data=data,
-        timeout=TIMEOUT
-    )
-
-    response.raise_for_status()
 
 
 def main():
