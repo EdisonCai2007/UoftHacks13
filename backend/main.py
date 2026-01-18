@@ -7,6 +7,8 @@ from screen_capture.screen_capture import capture_binary
 from eye_tracking.eye_tracker import calibrate_eye_tracker, run_eye_tracker_stream
 from orchestrate_webhook import send_to_webhook
 from user_onboarding import TaskInputDialog
+from login_ui import LoginDialog
+from api_client import APIClient
 from amplitude_service.amplitude_service import track_session_start, track_session_end, track_tab_switch, track_look_away, generate_session_id
 
 
@@ -97,6 +99,20 @@ def main():
     root.geometry("0x0")  # Make it invisible
     root.attributes('-alpha', 0)  # Transparent
 
+    # Initialize API Client
+    api = APIClient()
+    
+    # Show Login Dialog
+    login_dialog = LoginDialog(root, api)
+    root.mainloop()
+
+    if not login_dialog.is_authenticated():
+        print("❌ Login failed or cancelled. Exiting.")
+        return
+
+    # Create new root for TaskInputDialog (LoginDialog destroyed itself but master/root persists)
+    # We just need to re-enter mainloop for the next dialog
+    
     dialog = TaskInputDialog(root)
     root.mainloop()  # Wait for user input
 
@@ -169,6 +185,21 @@ def main():
             session_id=metrics.session_id,
             duration=session_duration
         )
+
+        # Upload to Web Backend
+        print("\n☁️ Uploading session to backend...")
+        session_data = {
+            "duration_seconds": session_duration,
+            "look_away_count": metrics.look_away_count,
+            "total_look_away_duration": metrics.total_look_away_duration,
+            "tab_switch_count": metrics.tab_switch_count,
+            "task": USER_TASK
+        }
+        success, response = api.upload_session(session_data)
+        if success:
+            print(f"✅ Upload successful! ID: {response.get('id')}")
+        else:
+            print(f"❌ Upload failed: {response}")
         
         # Print final metrics
         print("\n" + "=" * 50)
