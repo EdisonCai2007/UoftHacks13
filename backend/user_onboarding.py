@@ -15,9 +15,9 @@ class TaskInputDialog:
         self.dialog.geometry("450x450")
         
         # Colors & Fonts
-        self.bg_color = "#1e293b"
-        self.text_bg = "#334155"
-        self.accent_color = "#38bdf8"
+        self.bg_color = "#ffecc4"
+        self.text_bg = "#6a4800"
+        self.accent_color = "#db2323"
         self.font_main = "Alice" if not IS_MAC else "Optima"
 
         self.dialog.config(bg=self.bg_color)
@@ -44,14 +44,14 @@ class TaskInputDialog:
         self.food_var = tk.BooleanVar()
         
         tk.Checkbutton(checkbox_frame, text="Studying with friends", 
-                      variable=self.friends_var, bg=self.bg_color, fg="white",
-                      selectcolor=self.text_bg, activebackground=self.bg_color,
-                      activeforeground="white", font=("Arial", 10)).pack(anchor=tk.W, pady=3)
+                      variable=self.friends_var, bg=self.bg_color, fg="black",
+                      selectcolor=self.accent_color, activebackground=self.bg_color,
+                      activeforeground="white", font=("Arial", 11, "bold")).pack(anchor=tk.W, pady=3)
         
         tk.Checkbutton(checkbox_frame, text="Studying with food/drinks", 
-                      variable=self.food_var, bg=self.bg_color, fg="white",
-                      selectcolor=self.text_bg, activebackground=self.bg_color,
-                      activeforeground="white", font=("Arial", 10)).pack(anchor=tk.W, pady=3)
+                      variable=self.food_var, bg=self.bg_color, fg="black",
+                      selectcolor=self.accent_color, activebackground=self.bg_color,
+                      activeforeground="white", font=("Arial", 11, "bold")).pack(anchor=tk.W, pady=3)
         
         # Bindings
         self.text_area.bind("<FocusIn>", self.clear_placeholder)
@@ -63,10 +63,10 @@ class TaskInputDialog:
         btn_frame.pack(pady=15)
 
         tk.Button(btn_frame, text="Add Tasks", command=self.submit, bg=self.accent_color,
-                  fg="#0f172a", font=(self.font_main, 11, "bold"), padx=20).pack(side=tk.LEFT, padx=10)
+                  fg="#0f172a", font=(self.accent_color, 11, "bold"), padx=20).pack(side=tk.LEFT, padx=10)
         
         tk.Button(btn_frame, text="Cancel", command=self.cancel, bg=self.accent_color,
-                  fg="#0f172a", font=(self.font_main, 11, "bold"), padx=20).pack(side=tk.LEFT, padx=10)
+                  fg="#0f172a", font=(self.accent_color, 11, "bold"), padx=20).pack(side=tk.LEFT, padx=10)
 
         # Helper label for shortcut
         hint = "⌘ + Enter" if IS_MAC else "Ctrl + Enter"

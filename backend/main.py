@@ -2,6 +2,8 @@ import time
 import threading
 import subprocess
 import tkinter as tk
+import os
+import json
 from datetime import datetime
 from screen_capture.screen_capture import capture_binary
 from eye_tracking.eye_tracker import calibrate_eye_tracker, run_eye_tracker_stream
@@ -10,7 +12,7 @@ from user_onboarding import TaskInputDialog
 from amplitude_service.amplitude_service import track_session_start, track_session_end, track_tab_switch, track_look_away, generate_session_id
 
 
-CAPTURE_INTERVAL = 15  # seconds
+CAPTURE_INTERVAL = 5  # seconds
 USER_TASK, USER_FRIENDS, USER_FOOD = "","",""
 
 # ========================
@@ -74,11 +76,11 @@ def run_screen_capture():
         time.sleep(CAPTURE_INTERVAL)
 
 def start_buddy():
-    """Start the test.py moose in a separate process"""
+    """Start the buddy.py moose in a separate process"""
     print("🦌 Starting Buddy Moose...")
     
     buddy_process = subprocess.Popen(
-        ["python3", "../frontend/test.py"],
+        ["python3", "../frontend/buddy.py"],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE
     )
@@ -86,9 +88,27 @@ def start_buddy():
     print(f"✅ Buddy started (PID: {buddy_process.pid})")
     return buddy_process
 
+def ensure_config_file():
+    """Create config.json with default values if it doesn't exist"""
+    config_file = os.path.abspath(os.path.join(os.path.dirname(__file__), 'config.json'))
+    if not os.path.exists(config_file):
+        default_config = {
+            'MIN_LOOK_AWAY_DURATION': 3,
+            'last_updated': datetime.utcnow().isoformat()
+        }
+        try:
+            with open(config_file, 'w') as f:
+                json.dump(default_config, f, indent=2)
+            print(f"✅ Created default config file: {config_file}")
+        except IOError as e:
+            print(f"⚠️  Warning: Could not create config file: {e}")
+
 def main():
     print("🚀 Multi-capture system starting...")
     print("=" * 50)
+    
+    # Ensure config file exists
+    ensure_config_file()
     
     # STEP 0: Get user tasks - INLINE
     print("\n📍 STEP 0: Task Setup")
@@ -179,11 +199,6 @@ def main():
         print(f"Look Aways: {metrics.look_away_count}")
         print(f"Total Look Away Time: {metrics.total_look_away_duration:.1f}s")
         print("=" * 50)
-        
-        if buddy_process.poll() is None:
-            print("🦌 Stopping Buddy...")
-            buddy_process.terminate()
-            buddy_process.wait(timeout=5)
     
     print("\n👋 System stopped")
 

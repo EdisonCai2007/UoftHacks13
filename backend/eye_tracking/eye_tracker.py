@@ -7,6 +7,23 @@ import json
 import os
 
 VIDEO_CAPTURE = 0
+H_THRESHOLD, V_THRESHOLD = 0.04, 0.04
+ALARM_DURATION = 15
+MIN_LOOK_AWAY_DURATION = 3  # Default value
+
+# Load MIN_LOOK_AWAY_DURATION from config.json if it exists
+def load_config():
+    """Load configuration from config.json, return default if not found"""
+    config_file = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'config.json'))
+    try:
+        with open(config_file, 'r') as f:
+            config = json.load(f)
+            return config.get('MIN_LOOK_AWAY_DURATION', MIN_LOOK_AWAY_DURATION)
+    except (FileNotFoundError, json.JSONDecodeError, KeyError):
+        return MIN_LOOK_AWAY_DURATION
+
+# Load the value at module import time
+MIN_LOOK_AWAY_DURATION = load_config() 
 
 # Initialize MediaPipe
 def init_mediapipe():
@@ -136,10 +153,6 @@ def run_eye_tracker_stream(center_h=0.5, center_v=0.45, metrics=None):
 
     history_h = deque(maxlen=10)
     history_v = deque(maxlen=10)
-
-    H_THRESHOLD, V_THRESHOLD = 0.04, 0.04
-    ALARM_DURATION = 15
-    MIN_LOOK_AWAY_DURATION = 3  # Only track if user looks away for at least 3 seconds
 
     off_screen_start_time = None
     alarm_triggered = False

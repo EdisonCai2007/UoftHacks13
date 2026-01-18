@@ -1,0 +1,428 @@
+[
+  {
+    "timestamp": "2026-01-17T20:15:54.226439",
+    "focus_rating": 7,
+    "work_environment": "Blue",
+    "additional_notes": "bob"
+  },
+  {
+    "timestamp": "2026-01-17T20:20:05.149526",
+    "focus_rating": 5,
+    "work_environment": "e",
+    "additional_notes": "e"
+  },
+  {
+    "timestamp": "2026-01-17T20:20:33.782662",
+    "focus_rating": 5,
+    "work_environment": "resresr",
+    "additional_notes": "fefsfs"
+  },
+  {
+    "timestamp": "2026-01-17T21:14:16.738217",
+    "focus_rating": 6,
+    "work_environment": "dwadkwdoad",
+    "additional_notes": "awdada"
+  },
+  {
+    "timestamp": "2026-01-17T21:16:09.177123",
+    "focus_rating": 5,
+    "work_environment": "dkwmkdmawd",
+    "additional_notes": "dwakmdawd"
+  },
+  {
+    "timestamp": "2026-01-17T21:19:55.136111",
+    "focus_rating": 5,
+    "work_environment": "jdwjndand",
+    "additional_notes": "kwdnadad"
+  },
+  {
+    "timestamp": "2026-01-17T21:21:03.189092",
+    "focus_rating": 5,
+    "work_environment": "dwadwdawd",
+    "additional_notes": "wdadada"
+  },
+  {
+    "timestamp": "2026-01-17T21:21:37.052769",
+    "focus_rating": 5,
+    "work_environment": "dwadkwdad",
+    "additional_notes": "dwojmdad"
+  },
+  {
+    "timestamp": "2026-01-17T21:22:54.718895",
+    "focus_rating": 6,
+    "work_environment": "dwadwadwa",
+    "additional_notes": "dwadwada"
+  },
+  {
+    "timestamp": "2026-01-17T21:23:56.117654",
+    "focus_rating": 5,
+    "work_environment": "dwdwadawda",
+    "additional_notes": "dwadawdad"
+  },
+  {
+    "timestamp": "2026-01-17T21:27:25.172023",
+    "focus_rating": 5,
+    "work_environment": "dwadwdawd",
+    "additional_notes": "dwadadw"
+  },
+  {
+    "timestamp": "2026-01-17T21:28:31.933198",
+    "focus_rating": 5,
+    "work_environment": "dwadwadawd",
+    "additional_notes": "dwadwad"
+  },
+  {
+    "timestamp": "2026-01-17T21:31:39.147854",
+    "focus_rating": 5,
+    "work_environment": "jdnwajnda",
+    "additional_notes": "dwnajdnawd"
+  },
+  {
+    "timestamp": "2026-01-17T21:33:20.144408",
+    "focus_rating": 5,
+    "work_environment": "dwadwadawd",
+    "additional_notes": "dwadwadawd"
+  },
+  {
+    "timestamp": "2026-01-17T21:35:54.266042",
+    "focus_rating": 5,
+    "work_environment": "dwadwdad",
+    "additional_notes": "dwadadad"
+  },
+  {
+    "timestamp": "2026-01-17T21:36:54.702685",
+    "focus_rating": 5,
+    "work_environment": "dwadwdad",
+    "additional_notes": "dwadawda"
+  },
+  {
+    "timestamp": "2026-01-17T21:38:00.739961",
+    "focus_rating": 5,
+    "work_environment": "dwkndkawd",
+    "additional_notes": "dwkndkad"
+  },
+  {
+    "timestamp": "2026-01-17T21:39:24.281086",
+    "focus_rating": 5,
+    "work_environment": "dwadwad",
+    "additional_notes": "dwa"
+  },
+  {
+    "timestamp": "2026-01-17T21:45:53.645792",
+    "focus_rating": 5,
+    "work_environment": "dwadawd",
+    "additional_notes": "dwadawd"
+  },
+  {
+    "timestamp": "2026-01-17T21:46:49.051357",
+    "focus_rating": 5,
+    "work_environment": "dwadwd",
+    "additional_notes": "dwadwad"
+  },
+  {
+    "timestamp": "2026-01-17T21:49:10.744566",
+    "focus_rating": 5,
+    "work_environment": "dwadawd",
+    "additional_notes": "dawdad"
+  },
+  {
+    "timestamp": "2026-01-17T21:50:27.512596",
+    "focus_rating": 5,
+    "work_environment": "djwadijwda",
+    "additional_notes": "diwajdiad"
+  },
+  {
+    "timestamp": "2026-01-17T21:51:29.104695",
+    "focus_rating": 5,
+    "work_environment": "dwadad",
+    "additional_notes": "dwada"
+  },
+  {
+    "timestamp": "2026-01-17T21:52:33.144802",
+    "focus_rating": 5,
+    "work_environment": "dwadad",
+    "additional_notes": "dwadad"
+  },
+  {
+    "timestamp": "2026-01-17T21:57:26.077794",
+    "focus_rating": 5,
+    "work_environment": "dwadokada",
+    "additional_notes": "dwadad"
+  },
+  {
+    "timestamp": "2026-01-17T21:58:24.816344",
+    "focus_rating": 5,
+    "work_environment": "dwadadad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T21:59:54.162997",
+    "focus_rating": 5,
+    "work_environment": "dwadad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:02:21.016782",
+    "focus_rating": 5,
+    "work_environment": "dwadadad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:02:46.566496",
+    "focus_rating": 5,
+    "work_environment": "dwadadad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:04:20.726331",
+    "focus_rating": 5,
+    "work_environment": "wadsdasdasd",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:10:27.783680",
+    "focus_rating": 5,
+    "work_environment": "dwda",
+    "additional_notes": "dwada"
+  },
+  {
+    "timestamp": "2026-01-17T22:11:29.572771",
+    "focus_rating": 5,
+    "work_environment": "dwadadwad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:12:20.229891",
+    "focus_rating": 5,
+    "work_environment": "dwadad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:14:52.328902",
+    "focus_rating": 5,
+    "work_environment": "dwadad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:16:12.839345",
+    "focus_rating": 5,
+    "work_environment": "dwadad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:16:57.000068",
+    "focus_rating": 5,
+    "work_environment": "dwadasdasd",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:18:25.424904",
+    "focus_rating": 5,
+    "work_environment": "dwasda",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:23:00.058163",
+    "focus_rating": 5,
+    "work_environment": "dwasd",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:25:02.798705",
+    "focus_rating": 5,
+    "work_environment": "adwad",
+    "additional_notes": "dwad"
+  },
+  {
+    "timestamp": "2026-01-17T22:26:45.222842",
+    "focus_rating": 5,
+    "work_environment": "dwadasd",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:29:54.139355",
+    "focus_rating": 5,
+    "work_environment": "kiknfsfsf",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:30:23.538604",
+    "focus_rating": 5,
+    "work_environment": "dwasdasda",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-17T22:31:21.403752",
+    "focus_rating": 5,
+    "work_environment": "dwadsadad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-18T01:12:31.862680",
+    "focus_rating": 5,
+    "work_environment": "eee",
+    "additional_notes": "Help me. They are kidnapping me"
+  },
+  {
+    "timestamp": "2026-01-18T01:24:56.159497",
+    "focus_rating": 5,
+    "work_environment": "hello",
+    "additional_notes": "mtefesfwawd"
+  },
+  {
+    "timestamp": "2026-01-18T01:47:31.147722",
+    "focus_rating": 7,
+    "work_environment": "Empty Library",
+    "additional_notes": "Help me I'm getting kidnapped"
+  },
+  {
+    "timestamp": "2026-01-18T05:51:33.920897",
+    "focus_rating": 8,
+    "work_environment": "Home",
+    "additional_notes": "Had a nice coffee"
+  },
+  {
+    "timestamp": "2026-01-18T06:21:55.066250",
+    "focus_rating": 7,
+    "work_environment": "Robarts commons with a lot of friends",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-18T06:25:45.362161",
+    "focus_rating": 7,
+    "work_environment": "WOrked well in robarts commons with other students",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-18T06:29:56.928210",
+    "focus_rating": 5,
+    "work_environment": "dwadadad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-18T06:30:25.083888",
+    "focus_rating": 5,
+    "work_environment": "dwasdasd",
+    "additional_notes": "wdasdasd"
+  },
+  {
+    "timestamp": "2026-01-18T06:35:05.440354",
+    "focus_rating": 8,
+    "work_environment": "dwdasdad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-18T06:36:25.574806",
+    "focus_rating": 5,
+    "work_environment": "dwadad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-18T06:37:37.079350",
+    "focus_rating": 7,
+    "work_environment": "wdasdad",
+    "additional_notes": null
+  },
+  {
+    "timestamp": "2026-01-18T06:50:59.899377",
+    "focus_rating": 5,
+    "work_environment": "dwadasd",
+    "additional_notes": "dwads"
+  },
+  {
+    "timestamp": "2026-01-18T06:51:44.902741",
+    "focus_rating": 6,
+    "work_environment": "wasdads",
+    "additional_notes": "das"
+  },
+  {
+    "timestamp": "2026-01-18T06:52:27.870158",
+    "focus_rating": 5,
+    "work_environment": "wasdsad",
+    "additional_notes": "wdasdas"
+  },
+  {
+    "timestamp": "2026-01-18T06:54:00.829448",
+    "focus_rating": 5,
+    "work_environment": "wdasd",
+    "additional_notes": "dwasd"
+  },
+  {
+    "timestamp": "2026-01-18T06:54:33.167406",
+    "focus_rating": 5,
+    "work_environment": "wdasdasd",
+    "additional_notes": "dwasdada"
+  },
+  {
+    "timestamp": "2026-01-18T06:54:49.795165",
+    "focus_rating": 5,
+    "work_environment": "wasdasd",
+    "additional_notes": "wdasd"
+  },
+  {
+    "timestamp": "2026-01-18T06:56:07.935382",
+    "focus_rating": 7,
+    "work_environment": "wasdasd",
+    "additional_notes": "wasds"
+  },
+  {
+    "timestamp": "2026-01-18T06:58:49.102448",
+    "focus_rating": 5,
+    "work_environment": "wdasdad",
+    "additional_notes": "wdasdad"
+  },
+  {
+    "timestamp": "2026-01-18T07:01:21.472512",
+    "focus_rating": 5,
+    "work_environment": "awdasdad",
+    "additional_notes": "wdasdad"
+  },
+  {
+    "timestamp": "2026-01-18T07:01:24.172203",
+    "focus_rating": 5,
+    "work_environment": "awdasdad",
+    "additional_notes": "wdasdad"
+  },
+  {
+    "timestamp": "2026-01-18T07:02:21.263528",
+    "focus_rating": 5,
+    "work_environment": "wasdsad",
+    "additional_notes": "wdasdasd"
+  },
+  {
+    "timestamp": "2026-01-18T07:04:56.530581",
+    "focus_rating": 5,
+    "work_environment": "wasdasd",
+    "additional_notes": "wdasdasd"
+  },
+  {
+    "timestamp": "2026-01-18T07:05:58.191092",
+    "focus_rating": 8,
+    "work_environment": "wasdad",
+    "additional_notes": "wadsad"
+  },
+  {
+    "timestamp": "2026-01-18T07:06:49.862972",
+    "focus_rating": 5,
+    "work_environment": "wdasdad",
+    "additional_notes": "dwasdad"
+  },
+  {
+    "timestamp": "2026-01-18T07:08:30.541431",
+    "focus_rating": 5,
+    "work_environment": "wasdasd",
+    "additional_notes": "wdasdd"
+  },
+  {
+    "timestamp": "2026-01-18T07:09:24.835930",
+    "focus_rating": 5,
+    "work_environment": "wasdasda",
+    "additional_notes": "wdasd"
+  },
+  {
+    "timestamp": "2026-01-18T07:09:59.017520",
+    "focus_rating": 5,
+    "work_environment": "dwasdasd",
+    "additional_notes": "dwasda"
+  }
+]
